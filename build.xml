@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project [
+<!ENTITY buildProps SYSTEM "./build.properties">
+]>
+
+<project name="identifier" default="build" basedir="."> &buildProps; <property name="appname"
+        value="${ant.project.name}"/>
+    <property name="compile.debug" value="true"/>
+    <property name="compile.optimize" value="false"/>
+
+    <path id="compile.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="run.classpath">
+        <pathelement location="${build.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="init">
+        <echo message="-------- Start building, please wait --------"/>
+    </target>
+
+    <target name="build" depends="compile">
+        <!--copy file="${conf.dir}/translet.xsl" todir="${build.dir}/gr/agroknow/metadata/translet/xsl"/-->
+        <echo message=" Building with ${ant.version} on Java ${ant.java.version}...."/>
+    </target>
+
+    <target name="compile" depends="prepare">
+        <javac srcdir="${src.dir}/" destdir="${build.dir}/" encoding="utf8" debug="${compile.debug}">
+            <classpath refid="compile.classpath"/>
+            <!--
+<compilerarg value="-Xlint:unchecked" />
+-->
+        </javac>
+    </target>
+
+    <target name="prepare" depends="init">
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${dist.dir}"/>
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="dist" depends="package">
+        <echo message=" Packaging jar file...."/>
+    </target>
+
+    <target name="package" depends="build">
+        <jar destfile="${dist.dir}/${appname}.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class"
+                    value="gr.agroknow.metadata.identifier.IdentityManager"/>
+                <attribute name="Class-Path" value="./lib/JFlex.jar ./lib/mysql-connector-java-5.1.22-bin.jar ./lib/simpleParser.jar"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java classname="gr.agroknow.metadata.identifier.IdentityManager"
+            classpathref="run.classpath">
+            <arg value=""/>          
+        </java>
+    </target>
+
+</project>
