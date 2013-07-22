@@ -59,7 +59,7 @@
             <manifest>
                 <attribute name="Main-Class"
                     value="gr.agroknow.metadata.identifier.IdentityManager"/>
-                <attribute name="Class-Path" value="./lib/JFlex.jar ./lib/mysql-connector-java-5.1.22-bin.jar ./lib/simpleParser.jar"/>
+                <attribute name="Class-Path" value="./lib/mysql-connector-java-5.1.22-bin.jar ./lib/simpleParser.jar"/>
             </manifest>
         </jar>
     </target>
