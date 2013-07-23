@@ -49,16 +49,6 @@ public class IdentityManager
         // this is a list in which you can keep a copy of the identification beans
         // created by the algorithm (they duplicate the recorded added to the 1st list
 
-       public static final String ROOT_FOLDER = "C:/Users/nimas/Documents/AGROKNOW/DeSolutions/LOM PARSER/lomParser/test" ;
-       public static final String DUP_FOLDER = "C:/Users/nimas/Documents/AGROKNOW/DeSolutions/LOM PARSER/lomParser/Duplicate" ;
-       public static final String SUSP_FOLDER = "C:/Users/nimas/Documents/AGROKNOW/DeSolutions/LOM PARSER/lomParser/Suspicious" ;
-       
-  //     public static final String LOM_FOLDER = ROOT_FOLDER + "lomtestset" + File.separator ;
-       
-      public static final String LOM_FOLDER = "C:/Users/nimas/Documents/AGROKNOW/DeSolutions/LOM PARSER/lomParser/LOM/TEST/lomtestset";
-       
-      public static final String DC_FOLDER = ROOT_FOLDER  + File.separator + "DCs" + File.separator ;
-      public static final String NSDL_FOLDER = ROOT_FOLDER + File.separator + "NSDLs" + File.separator;
 
         protected IdentityManager(String dbURl) throws Exception
         {
@@ -894,13 +884,7 @@ public void categorizeFolder(String pathToMeta, String Folder, String duplFolder
         }
 
     
- /*    public static void main( String[] args ) throws Exception
-	{       
-          String dbUrl = "jdbc:mysql://127.0.0.1:3306/id_SERVICE?user=root&password=admin";
-          IdentityManager_v1.getInstance(dbUrl).categorizeFolder(LOM_FOLDER,ROOT_FOLDER,DUP_FOLDER,SUSP_FOLDER,"LOM");
-          IdentityManager_v1.getInstance(dbUrl).saveNewRecords(dbUrl);
-	}*/
-  
+ 
     
        public static void main( String[] args ) throws Exception
 	{
