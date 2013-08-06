@@ -221,6 +221,17 @@ public class IdentityManager
 
                 return simpleMetadata;
 	}
+	
+	public SimpleMetadata extrMODS(String pathToMetadata) throws ParserException, net.zettadata.simpleparser.ParserException
+	{
+		//File metadataFile = new File( pathToMetadata ) ;
+
+		simpleMetadata = SimpleMetadataFactory.getSimpleMetadata( SimpleMetadataFactory.MODS ) ;
+		simpleMetadata.load(pathToMetadata);
+
+                return simpleMetadata;
+	}
+
 
 
     public void categorize(String pathToMeta, String Folder, String duplFolder, String suspFolder, String MetadataFormat) throws SQLException, IOException, net.zettadata.simpleparser.ParserException{
@@ -317,6 +328,9 @@ public class IdentityManager
                                 else if ("NSDL".equals(MetadataFormat)) {
                                          elements = instance.extrNSDL(file.getAbsolutePath()) ;                                           
                                      }
+								 else if ("MODS".equals(MetadataFormat)) {
+									 elements = instance.extrMODS(file.getAbsolutePath()) ;                                           
+								 }
                                  else {
                                          System.out.println("The metadata format is not supported");
                                      }
@@ -509,6 +523,9 @@ public void categorizeFolder(String pathToMeta, String Folder, String duplFolder
                      else if ("NSDL".equals(MetadataFormat)) {
                               elements = instance.extrNSDL(file.getAbsolutePath()) ;                                           
                           }
+					 else if ("MODS".equals(MetadataFormat)) {
+					  elements = instance.extrMODS(file.getAbsolutePath()) ;                                           
+					      }
                       else {
                               System.out.println("The metadata format is not supported");
                           }
